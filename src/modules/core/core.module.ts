@@ -16,13 +16,13 @@ import { file } from '@/settings/environment'
       envFilePath: file,
       isGlobal: true
     }),
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      synchronize: true,
-      url: process.env.PG_URL as string,
-      entities: [Order]
-    }),
-    OrderModule
+    // TypeOrmModule.forRoot({
+    //   type: 'postgres',
+    //   synchronize: true,
+    //   url: process.env.PG_URL as string,
+    //   entities: [Order]
+    // }),
+    // OrderModule
   ],
   controllers: [CoreController],
   providers: [CoreService],
