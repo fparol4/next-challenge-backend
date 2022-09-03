@@ -20,9 +20,15 @@ import { file } from '@/settings/environment'
       type: 'postgres',
       synchronize: true,
       url: process.env.DATABASE_URL as string,
-      entities: [Order]
+      entities: [Order],
+      ssl: true,
+      extra: {
+        ssl: {
+          rejectUnauthorized: false
+        }
+      }
     }),
-    // OrderModule
+    OrderModule
   ],
   controllers: [CoreController],
   providers: [CoreService],
