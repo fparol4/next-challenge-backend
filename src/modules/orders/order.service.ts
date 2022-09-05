@@ -20,7 +20,7 @@ export class OrdersService {
                 differenceInDays(new Date(first.due_date), new Date(first.entry_date)),
                 differenceInDays(new Date(second.due_date), new Date(second.entry_date))
             ]
-            return secondDiff - firstDiff
+            return firstDiff - secondDiff
         })
 
         return sorted
@@ -37,5 +37,9 @@ export class OrdersService {
     async findById(id: number) {
         const [order] = await this.ordersRepository.findBy({ id })
         return order
+    }
+
+    async delete(id: number) {
+        return this.ordersRepository.delete({ id })
     }
 }

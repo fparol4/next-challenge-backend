@@ -8,10 +8,12 @@ import {
     Body,
     Post,
     ParseIntPipe,
-    HttpCode
+    HttpCode,
+    Delete
 } from '@nestjs/common';
 import { OrdersService } from './order.service'
 import { CreateOrderDto, UpdateOrderDto } from './dto'
+
 
 @Controller('/orders')
 export class OrdersController {
@@ -76,6 +78,18 @@ export class OrdersController {
 
         return {
             status: HttpStatus.ACCEPTED
+        }
+    }
+
+    @Delete('/delete/:id')
+    @HttpCode(HttpStatus.OK)
+    async delete(
+        @Param('id', ParseIntPipe) id: number
+    ) {
+        await this.ordersService.delete(id)
+
+        return {
+            status: HttpStatus.OK,
         }
     }
 }

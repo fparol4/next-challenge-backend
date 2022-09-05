@@ -21,12 +21,12 @@ import { file } from '@/settings/environment'
       synchronize: true,
       url: process.env.DATABASE_URL as string,
       entities: [Order],
-      ssl: true,
-      extra: {
-        ssl: {
-          rejectUnauthorized: false
-        }
-      }
+      // ssl: true,
+      // extra: {
+      //   ssl: {
+      //     rejectUnauthorized: false
+      //   }
+      // }
     }),
     OrderModule
   ],
