@@ -93,7 +93,7 @@ export class OrdersController {
         }
     }
 
-    @Delete('/delete/:id')
+    @Delete('/:id')
     @HttpCode(HttpStatus.OK)
     async delete(
         @Param('id', ParseIntPipe) id: number
