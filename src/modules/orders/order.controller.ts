@@ -61,6 +61,18 @@ export class OrdersController {
         }
     }
 
+    @Post('bulk')
+    @HttpCode(HttpStatus.ACCEPTED)
+    async bulk(@Body() orders: CreateOrderDto[]) {
+        for (let order of orders) {
+            await this.ordersService.create(order)
+        }
+
+        return {
+            status: HttpStatus.ACCEPTED
+        }
+    }
+
     @Put(':id')
     @HttpCode(HttpStatus.ACCEPTED)
     async update(
